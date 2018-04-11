@@ -1,14 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class ScoreManager : MonoBehaviour {
+public class SceneManager : MonoBehaviour {
 
-    public static ScoreManager Instance;
+    public static SceneManager Instance;
 
-    public float Score;
-    public Text ScoreDisplay;
+    public GameObject CurrPanel;
 
     private void Awake()
     {
@@ -26,15 +24,11 @@ public class ScoreManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
 
-    // Use this for initialization
-    void Start () {
-        ScoreDisplay.text = "0";
-	}
-	
-    public void UpdateScore(float gain)
+    public void ChangePanel(GameObject panel)
     {
-        Score += gain;
-        ScoreDisplay.text = Score.ToString();
-        print("Score: " + Score);
+        if (CurrPanel != null)
+            CurrPanel.SetActive(false);
+        CurrPanel = panel;
+        CurrPanel.SetActive(true);
     }
 }

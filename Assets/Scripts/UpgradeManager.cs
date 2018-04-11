@@ -1,14 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class ScoreManager : MonoBehaviour {
+public class UpgradeManager : MonoBehaviour {
 
-    public static ScoreManager Instance;
-
-    public float Score;
-    public Text ScoreDisplay;
+    public static UpgradeManager Instance;
 
     private void Awake()
     {
@@ -24,17 +20,5 @@ public class ScoreManager : MonoBehaviour {
 
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
-    }
-
-    // Use this for initialization
-    void Start () {
-        ScoreDisplay.text = "0";
-	}
-	
-    public void UpdateScore(float gain)
-    {
-        Score += gain;
-        ScoreDisplay.text = Score.ToString();
-        print("Score: " + Score);
     }
 }
