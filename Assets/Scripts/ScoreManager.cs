@@ -34,6 +34,10 @@ public class ScoreManager : MonoBehaviour {
     public void UpdateScore(float gain)
     {
 		Score += gain;
-		ScoreDisplay.text = Math.Round(Score, 1).ToString();
+		if ((Math.Round(Score, 1) * 10) % 10 == 0) {
+			ScoreDisplay.text = Math.Round(Score, 1).ToString() + ".0";
+		} else {
+			ScoreDisplay.text = Math.Round(Score, 1).ToString();
+		}
     }
 }

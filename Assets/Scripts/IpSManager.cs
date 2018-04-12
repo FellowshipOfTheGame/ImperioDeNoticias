@@ -17,7 +17,7 @@ public class IpSManager : MonoBehaviour {
 	{
 		time = 0;
 		SM = gameObject.GetComponent<ScoreManager> ();
-		IpSDisplay.text = "+0 IpS";
+		IpSDisplay.text = "+" + (IpSGain * multiplier).ToString () + " IpS";
 	}
 
 	void Update () 
@@ -27,13 +27,18 @@ public class IpSManager : MonoBehaviour {
 		if (time >= era)
 		{
 			SM.UpdateScore (IpSGain * multiplier * era);
+			time = 0;
 		}
 	}
 
 	void IncreaseIpS (int value) 
 	{
 		IpSGain += value;
-		IpSDisplay.text = "+" + (IpSGain * multiplier).ToString () + " IpS";
+		if ((IpSGain * multiplier * 10) % 10 == 0) {
+			IpSDisplay.text = "+" + (IpSGain * multiplier).ToString () + ".0 IpS";
+		} else {
+			IpSDisplay.text = "+" + (IpSGain * multiplier).ToString () + " IpS";
+		}
 	}
 
 	void IncreaseMult (float mult)
