@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class IpSManager : MonoBehaviour {
 
+    public static IpSManager Instance;
+
 	[SerializeField] [Range(0, 1)] private float era = 0.01f;
 	[SerializeField] private float IpSGain;
 	[SerializeField] private float multiplier;
@@ -13,7 +15,23 @@ public class IpSManager : MonoBehaviour {
 	private ScoreManager SM;
 	private float time;
 
-	private void Start()
+    private void Awake()
+    {
+        //Check if instance already exists
+        if (Instance == null)
+            //if not, set instance to this
+            Instance = this;
+
+        //If instance already exists and it's not this:
+        else if (Instance != this)
+            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+            Destroy(gameObject);
+
+        //Sets this to not be destroyed when reloading scene
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
 	{
 		time = 0;
 		SM = gameObject.GetComponent<ScoreManager> ();
@@ -30,13 +48,13 @@ public class IpSManager : MonoBehaviour {
 		}
 	}
 
-	void IncreaseIpS (int value) 
+	public void IncreaseIpS (float value) 
 	{
 		IpSGain += value;
 		IpSDisplay.text = "+" + (IpSGain * multiplier).ToString () + " IpS";
 	}
 
-	void IncreaseMult (float mult)
+	public void IncreaseMult (float mult)
 	{
 		multiplier += mult;
 	}

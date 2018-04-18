@@ -36,4 +36,9 @@ public class ScoreManager : MonoBehaviour {
 		Score += gain;
 		ScoreDisplay.text = Math.Round(Score, 1).ToString();
     }
+
+    public void UpdateScore()
+    {
+        ScoreDisplay.text = Math.Round(Score, 1).ToString();
+    }
 }
