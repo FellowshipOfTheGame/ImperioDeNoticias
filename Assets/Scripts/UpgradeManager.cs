@@ -6,6 +6,9 @@ public class UpgradeManager : MonoBehaviour {
 
     public static UpgradeManager Instance;
 
+    public DeliveryUpgrade[] DeliveryUpgrades;
+    public TransmissionUpgrade[] TransmissionUpgrades;
+
     private void Awake()
     {
         //Check if instance already exists
@@ -20,6 +23,20 @@ public class UpgradeManager : MonoBehaviour {
 
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        for(int i = 0; i < DeliveryUpgrades.Length; i++)
+        {
+            DeliveryUpgrades[i].CurrentCost = DeliveryUpgrades[i].InitialCost;
+            DeliveryUpgrades[i].CurrentClickGain = DeliveryUpgrades[i].InitialClickGain;
+        }
+        for (int i = 0; i < TransmissionUpgrades.Length; i++)
+        {
+            TransmissionUpgrades[i].CurrentCost = TransmissionUpgrades[i].InitialCost;
+            TransmissionUpgrades[i].CurrentIpSGain = TransmissionUpgrades[i].InitialIpSGain;
+        }
     }
 
     public void BuyDeliveryUpgrade(DeliveryUpgrade du)
