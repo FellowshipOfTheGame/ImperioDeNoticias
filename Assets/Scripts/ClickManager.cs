@@ -8,8 +8,6 @@ public class ClickManager : MonoBehaviour {
 
     private float ClickGain;
 
-    public ScoreManager SM;
-
     private void Awake()
     {
         //Check if instance already exists
@@ -29,7 +27,7 @@ public class ClickManager : MonoBehaviour {
     public void Click()
     {
         print("Click");
-        SM.UpdateScore(ClickGain);
+        ScoreManager.Instance.UpdateScore(ClickGain);
     }
 
     public void IncreaseClick(float value)

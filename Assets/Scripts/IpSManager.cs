@@ -12,7 +12,6 @@ public class IpSManager : MonoBehaviour {
 	[SerializeField] private float multiplier;
 	[SerializeField] private Text IpSDisplay;
 
-	private ScoreManager SM;
 	private float time;
 
     private void Awake()
@@ -34,7 +33,6 @@ public class IpSManager : MonoBehaviour {
     private void Start()
 	{
 		time = 0;
-		SM = gameObject.GetComponent<ScoreManager> ();
 		IpSDisplay.text = "+0 IpS";
 	}
 
@@ -44,7 +42,7 @@ public class IpSManager : MonoBehaviour {
 
 		if (time >= era)
 		{
-			SM.UpdateScore (IpSGain * multiplier * era);
+			ScoreManager.Instance.UpdateScore (IpSGain * multiplier * era);
 		}
 	}
 

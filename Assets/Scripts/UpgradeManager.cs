@@ -27,7 +27,7 @@ public class UpgradeManager : MonoBehaviour {
         print("buy delivery!");
         ScoreManager.Instance.Score -= du.CurrentCost;
         ScoreManager.Instance.UpdateScore();
-        du.CurrentCost = 1.5f * du.CurrentCost;
+        du.CurrentCost = 1.15f * du.CurrentCost;
 
         du.CurrentClickGain = du.CurrentClickGain + du.InitialClickGain;
         ClickManager.Instance.IncreaseClick(du.InitialClickGain);
@@ -38,7 +38,7 @@ public class UpgradeManager : MonoBehaviour {
         print("buy transmission!");
         ScoreManager.Instance.Score -= tu.CurrentCost;
         ScoreManager.Instance.UpdateScore();
-        tu.CurrentCost = 1.5f * tu.CurrentCost;
+        tu.CurrentCost = 1.15f * tu.CurrentCost;
 
         tu.CurrentIpSGain = tu.CurrentIpSGain + tu.InitialIpSGain;
         IpSManager.Instance.IncreaseIpS(tu.InitialIpSGain);
