@@ -9,7 +9,7 @@ public class IpSManager : MonoBehaviour {
 
 	[SerializeField] [Range(0, 1)] private float era = 0.01f;
 	[SerializeField] private float IpSGain;
-	[SerializeField] private float multiplier;
+	[SerializeField] private float IpSMultiplier;
 	[SerializeField] private Text IpSDisplay;
 
 	private float time;
@@ -42,18 +42,21 @@ public class IpSManager : MonoBehaviour {
 
 		if (time >= era)
 		{
-			ScoreManager.Instance.UpdateScore (IpSGain * multiplier * era);
+			ScoreManager.Instance.UpdateScore (IpSGain * IpSMultiplier * era);
 		}
 	}
 
 	public void IncreaseIpS (float value) 
 	{
 		IpSGain += value;
-		IpSDisplay.text = "+" + (IpSGain * multiplier).ToString () + " IpS";
+        SaveManager.Instance.currentIpS = IpSGain;
+		IpSDisplay.text = "+" + (IpSGain * IpSMultiplier).ToString () + " IpS";
+
 	}
 
 	public void IncreaseMult (float mult)
 	{
-		multiplier += mult;
-	}
+		IpSMultiplier += mult;
+        SaveManager.Instance.currentMult = IpSMultiplier;
+    }
 }

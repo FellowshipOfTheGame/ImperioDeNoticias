@@ -26,12 +26,12 @@ public class ClickManager : MonoBehaviour {
 
     public void Click()
     {
-        print("Click");
         ScoreManager.Instance.UpdateScore(ClickGain);
     }
 
     public void IncreaseClick(float value)
     {
         ClickGain += value;
+        SaveManager.Instance.currentClick = ClickGain;
     }
 }

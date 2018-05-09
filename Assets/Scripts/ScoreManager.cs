@@ -34,11 +34,12 @@ public class ScoreManager : MonoBehaviour {
     public void UpdateScore(float gain)
     {
 		Score += gain;
-		ScoreDisplay.text = Math.Round(Score, 1).ToString();
+        UpdateScore();
     }
 
     public void UpdateScore()
     {
         ScoreDisplay.text = Math.Round(Score, 1).ToString();
+        SaveManager.Instance.currentScore = Score;
     }
 }
