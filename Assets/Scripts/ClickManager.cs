@@ -4,19 +4,34 @@ using UnityEngine;
 
 public class ClickManager : MonoBehaviour {
 
-    public float ClickGain;
+    public static ClickManager Instance;
 
-    public ScoreManager SM;
+    private float ClickGain;
 
-    private void Start()
+    private void Awake()
     {
-        print("Start");
+        //Check if instance already exists
+        if (Instance == null)
+            //if not, set instance to this
+            Instance = this;
 
+        //If instance already exists and it's not this:
+        else if (Instance != this)
+            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+            Destroy(gameObject);
+
+        //Sets this to not be destroyed when reloading scene
+        DontDestroyOnLoad(gameObject);
     }
 
     public void Click()
     {
-        print("Click");
-        SM.UpdateScore(ClickGain);
+        ScoreManager.Instance.UpdateScore(ClickGain);
+    }
+
+    public void IncreaseClick(float value)
+    {
+        ClickGain += value;
+        SaveManager.Instance.currentClick = ClickGain;
     }
 }
