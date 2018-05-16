@@ -6,7 +6,7 @@ public class ClickManager : MonoBehaviour {
 
     public static ClickManager Instance;
 
-    private float ClickGain;
+    [SerializeField] private float ClickGain;
 
     private void Awake()
     {

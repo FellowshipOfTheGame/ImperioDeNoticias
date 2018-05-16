@@ -16957,7 +16957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   du: {fileID: 11400000, guid: 40dc465ba40caa74680deb0be5595457, type: 2}
-  tu: {fileID: 0}
+  tu: {fileID: 11400000, guid: 55e51c4f265f95145bf6754bf211e3ec, type: 2}
   upgradeType: 0
 --- !u!1 &1181771386
 GameObject:
@@ -22540,7 +22540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   era: 0.01
   IpSGain: 1
-  multiplier: 1
+  IpSMultiplier: 1
   IpSDisplay: {fileID: 1423400755}
 --- !u!4 &1598716310
 Transform:
@@ -22922,6 +22922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a21912e67d7c15847be4078b85d8165f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClickGain: 1
 --- !u!4 &1618519758
 Transform:
   m_ObjectHideFlags: 0
@@ -23038,7 +23039,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveFileName: data
   currentScore: 0
+  currentClick: 0
   currentIpS: 0
+  currentMult: 0
   timeWhenClosed: 0
   deliveryUpgrades: []
   transmissionUpgrades: []
