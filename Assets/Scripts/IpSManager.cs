@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class IpSManager : MonoBehaviour {
-
     public static IpSManager Instance;
 
 	[SerializeField] [Range(0, 1)] private float era = 0.01f;
@@ -33,12 +32,7 @@ public class IpSManager : MonoBehaviour {
     private void Start()
 	{
 		time = 0;
-<<<<<<< HEAD
-		SM = gameObject.GetComponent<ScoreManager> ();
-		IpSDisplay.text = "+" + (IpSGain * multiplier).ToString () + " IpS";
-=======
 		IpSDisplay.text = "+0 IpS";
->>>>>>> fabrício
 	}
 
 	void Update () 
@@ -47,29 +41,21 @@ public class IpSManager : MonoBehaviour {
 
 		if (time >= era)
 		{
-<<<<<<< HEAD
-			SM.UpdateScore (IpSGain * multiplier * era);
 			time = 0;
-=======
 			ScoreManager.Instance.UpdateScore (IpSGain * IpSMultiplier * era);
->>>>>>> fabrício
 		}
 	}
 
 	public void IncreaseIpS (float value) 
 	{
 		IpSGain += value;
-<<<<<<< HEAD
-		if ((IpSGain * multiplier * 10) % 10 == 0) {
-			IpSDisplay.text = "+" + (IpSGain * multiplier).ToString () + ".0 IpS";
-		} else {
-			IpSDisplay.text = "+" + (IpSGain * multiplier).ToString () + " IpS";
-		}
-=======
-        SaveManager.Instance.currentIpS = IpSGain;
-		IpSDisplay.text = "+" + (IpSGain * IpSMultiplier).ToString () + " IpS";
+		SaveManager.Instance.currentIpS = IpSGain;
 
->>>>>>> fabrício
+		if ((IpSGain * IpSMultiplier * 10) % 10 == 0) {
+			IpSDisplay.text = "+" + (IpSGain * IpSMultiplier).ToString () + ".0 IpS";
+		} else {
+			IpSDisplay.text = "+" + (IpSGain * IpSMultiplier).ToString () + " IpS";
+		}
 	}
 
 	public void IncreaseMult (float mult)

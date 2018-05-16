@@ -5,10 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour {
-<<<<<<< HEAD
-=======
-
->>>>>>> fabrício
     public static ScoreManager Instance;
 
     public float Score;
@@ -30,32 +26,24 @@ public class ScoreManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
 
-<<<<<<< HEAD
-    // Use this for initialization
-    void Start () {
-=======
 	void Start () {
->>>>>>> fabrício
         ScoreDisplay.text = "0";
 	}
 	
     public void UpdateScore(float gain)
     {
 		Score += gain;
-<<<<<<< HEAD
-		if ((Math.Round(Score, 1) * 10) % 10 == 0) {
-			ScoreDisplay.text = Math.Round(Score, 1).ToString() + ".0";
-		} else {
-			ScoreDisplay.text = Math.Round(Score, 1).ToString();
-		}
-=======
         UpdateScore();
     }
 
     public void UpdateScore()
     {
-        ScoreDisplay.text = Math.Round(Score, 1).ToString();
+		if ((Math.Round(Score, 1) * 10) % 10 == 0) {
+			ScoreDisplay.text = Math.Round(Score, 1).ToString() + ".0";
+		} else {
+			ScoreDisplay.text = Math.Round(Score, 1).ToString();
+		}
+
         SaveManager.Instance.currentScore = Score;
->>>>>>> fabrício
     }
 }
